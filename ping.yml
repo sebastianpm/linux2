@@ -1,11 +1,12 @@
 ---
-- name: date and time demo
-  hosts: all
-  gather_facts: true
-  tasks:
-    - name: date and time
-      ansible.builtin.debug:
-        var: ansible_date_time
-    - name: Hora Actual
-      ansible.builtin.debug:
-        var: ansible_date_time.time
+  - name: Shell Examples
+    hosts: all
+    tasks:
+
+    - name: Check Date with Shell command
+      shell:
+         "date"
+      register: datecmd
+      tags: datecmd
+
+    - debug: msg="{{datecmd.stdout}}"
