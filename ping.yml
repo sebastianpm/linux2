@@ -1,6 +1,7 @@
 ---
   - name: Shell Examples
     hosts: all
+    become: true
     tasks:
 
     - name: Borrar Onpremise TM
