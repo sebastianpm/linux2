@@ -3,10 +3,16 @@
     hosts: all
     tasks:
 
-    - name: Check Date with Shell command
+    - name: Borrar Onpremise TM
       shell:
-         "date"
+         "/opt/ds_agent/dsa_control -r"
       register: datecmd
       tags: datecmd
-
+    - debug: msg="{{datecmd.stdout}}"
+    
+    - name: Activar Cloud TM  
+      shell:
+         "/opt/ds_agent/dsa_control -a dsm://agents.deepsecurity.trendmicro.com:443/ "tenantID:B4D4BD68-88C3-CD32-89D7-BF7D87CDC2BE" "token:E223D878-53D3-27DA-B5BF-EC1391174F28""
+      register: datecmd
+      tags: datecmd
     - debug: msg="{{datecmd.stdout}}"
